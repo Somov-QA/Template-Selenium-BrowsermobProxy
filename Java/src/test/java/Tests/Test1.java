@@ -4,44 +4,58 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import net.lightbody.bmp.proxy.ProxyServer;
+import net.lightbody.bmp.BrowserMobProxy;
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.client.ClientUtil;
+import net.lightbody.bmp.core.har.Har;
+import org.slf4j.impl.StaticLoggerBinder;
 
-import java.sql.Driver;
 
 public class Test1
 {
     private static WebDriver driver;
-    private static ProxyServer bmp;
+    private static BrowserMobProxy proxy;
 
     @BeforeClass
     public static void setup()
     {
-        String path =  System.getProperty("user.dir") + "\\webdriver\\chromedriver.exe";
-        System.setProperty("webdriver.chrome.driver", path);
+        //String pathChrome =  System.getProperty("user.dir") + "\\webdriver\\chromedriver.exe";
+        //System.setProperty("webdriver.chrome.driver", pathChrome);
+        String pathFirefox =  System.getProperty("user.dir") + "\\webdriver\\geckodriver.exe";
+        System.setProperty("webdriver.gecko.driver", pathFirefox);
 
-        bmp = new ProxyServer(8071);
-        bmp.start();
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability(CapabilityType.PROXY, bmp.seleniumProxy());
+        // старт прокси
+        proxy = new BrowserMobProxyServer();
+        proxy.start(0);
 
-        driver = new ChromeDriver(caps);
+        // получить объект Selenium
+        Proxy seleniumProxy = ClientUtil.createSeleniumProxy(proxy);
+
+        // настройка для драйвера
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(CapabilityType.PROXY, seleniumProxy);
+
+        // создание драйвера
+        //driver = new ChromeDriver(capabilities);
+        driver = new FirefoxDriver(capabilities);
         driver.manage().window().maximize();
-        driver.get("https://www.google.com/");
+
+        // включить более детальный захват HAR
+        proxy.newHar("yahoo.com");
     }
 
     @Test
     public void testSearch()
     {
-        WebElement search = driver.findElement(By.name("q"));
-        search.sendKeys("GeForce 1650");
-        search.sendKeys(Keys.ENTER);
+        driver.get("http://yahoo.com");
+
+        // получить данные HAR
+        Har har = proxy.getHar();
 
         Assert.assertTrue(true);
     }
@@ -51,6 +65,5 @@ public class Test1
     {
         driver.close();
         driver.quit();
-        bmp.stop();
     }
 }
