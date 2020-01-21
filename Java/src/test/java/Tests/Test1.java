@@ -13,8 +13,6 @@ import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
 import net.lightbody.bmp.client.ClientUtil;
 import net.lightbody.bmp.core.har.Har;
-import org.slf4j.impl.StaticLoggerBinder;
-
 
 public class Test1
 {
