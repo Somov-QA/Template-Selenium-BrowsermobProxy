@@ -44,7 +44,7 @@ public class Test4
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
         // создание драйвера
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver(capabilities);
 
         // включить более детальный захват HAR
         proxy.newHar("www.google.com");
@@ -68,6 +68,11 @@ public class Test4
         // получить данные HAR
         Har har = proxy.getHar();
         System.out.println("HAR: " + har.getLog().getVersion());
+        for (int i = 0; i < har.getLog().getEntries().size(); i++)
+        {
+            String link = har.getLog().getEntries().get(i).getRequest().getUrl();
+            System.out.println("HAR LINK: " + link);
+        }
 
         List<WebElement> elements = driver.findElements(By.className("g"));
         Assert.assertNotEquals(0, elements.size());
