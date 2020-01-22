@@ -24,3 +24,6 @@
 <br>Ссылка: https://mvnrepository.com/artifact/com.google.guava/guava/28.2-jre
 <br>Версия библиотеки 28.2 добавить dependency в файл pom.xml
 <br>
+<br>СЕРТИФИКАТ
+<br>Для корректной работы необходимо включить игнорирование сертификатов
+<br>options.addArguments("--ignore-certificate-errors", "--user-data-dir=somedirectory");
