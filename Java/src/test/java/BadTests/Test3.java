@@ -1,4 +1,4 @@
-package Tests;
+package BadTests;
 
 import java.io.File;
 import java.io.IOException;
