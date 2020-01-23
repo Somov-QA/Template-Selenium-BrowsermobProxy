@@ -1,7 +1,9 @@
 # Инструкция:
 <br>Создать проект в среде разработки IntelliJ IDEA
+<br>Официальный сайт: https://bmp.lightbody.net/
 <br>Официальный репозиторий: https://github.com/lightbody/browsermob-proxy
-<br>Пример: https://habr.com/ru/post/209752/
+<br>Webdriver для Chrome браузера: https://chromedriver.chromium.org/downloads
+<br>
 <br>
 <br>БИБЛИОТЕКИ:
 <br>Библиотека: BrowserMob Proxy Core (LittleProxy) Module » 2.1.5
@@ -24,6 +26,11 @@
 <br>Ссылка: https://mvnrepository.com/artifact/com.google.guava/guava/28.2-jre
 <br>Версия библиотеки 28.2 добавить dependency в файл pom.xml
 <br>
+<br>
 <br>СЕРТИФИКАТ
 <br>Для корректной работы необходимо включить игнорирование сертификатов
 <br>options.addArguments("--ignore-certificate-errors", "--user-data-dir=somedirectory");
+<hr>
+<br>Пример: https://habr.com/ru/post/209752/
+<br>Пример: https://techblog.dotdash.com/selenium-browsermob-integration-c35f4713fb59
+<br>Статья в которой решена проблема сертификатов: https://stackoverflow.com/questions/39348289/selenium-chrome-and-browsermob-doesnt-work-for-https

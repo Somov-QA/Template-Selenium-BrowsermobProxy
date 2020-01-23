@@ -83,5 +83,6 @@ public class Test1
     {
         driver.close();
         driver.quit();
+        proxy.stop();
     }
 }
