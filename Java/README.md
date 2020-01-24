@@ -1,8 +1,8 @@
 # Инструкция:
-<br>Создать проект в среде разработки IntelliJ IDEA
 <br>Официальный сайт: https://bmp.lightbody.net/
 <br>Официальный репозиторий: https://github.com/lightbody/browsermob-proxy
 <br>Webdriver для Chrome браузера: https://chromedriver.chromium.org/downloads
+<br>Среда разработки IntelliJIDEA: https://www.jetbrains.com/ru-ru/idea/
 <br>
 <br>
 <br>БИБЛИОТЕКИ:
