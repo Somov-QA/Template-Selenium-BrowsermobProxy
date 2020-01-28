@@ -1,0 +1,13 @@
+plugins {
+  id 'java'
+  id "com.katalon.gradle-plugin" version "0.0.7"
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  // https://mvnrepository.com/artifact/net.lightbody.bmp/browsermob-core
+  compile group: 'net.lightbody.bmp', name: 'browsermob-core', version: '2.1.5'
+}
