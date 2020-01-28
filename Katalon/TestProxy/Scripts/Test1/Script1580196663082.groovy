@@ -63,8 +63,6 @@ try {
 
 
 Har har = proxy.getHar();
-System.out.println("HAR: " + har.getLog().getVersion());
-
 for (int i = 0; i < har.getLog().getEntries().size(); i++)
 {
 	String link = har.getLog().getEntries().get(i).getRequest().getUrl();
